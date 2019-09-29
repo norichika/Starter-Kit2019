@@ -1,0 +1,38 @@
+<% include ./_partial/_util.ejs %>
+<%
+var path = pathSet(filename);
+contentsData = {
+  "url"        : siteData["url"] + "/" + path["absolute"],
+  "description": "page",
+  "og_image"   : siteData["url"] + "/" + path["absolute"] + "og.jpg",
+  "cssPath"     : [
+
+  ],
+  "jsPath"     : [
+
+  ]
+}
+
+%>
+<%-
+include(path.relative + '_partial/_head.ejs', {
+siteData: siteData,
+contentsData: contentsData
+})
+%>
+<body>
+<%-
+include(path.relative + '_partial/_jsonLD_breadcrumb.ejs', {
+contentsData: contentsData
+})
+%>
+<div class="container">
+  <header>header</header>
+  <main>main</main>
+  <footer>footer</footer>
+  <aside>aside</aside>
+</div>
+</body>
+<%-
+include(path.relative + '_partial/_foot.ejs')
+%>
